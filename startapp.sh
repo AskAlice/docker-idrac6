@@ -1,4 +1,5 @@
 #!/bin/sh
+set -x
 
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -120,13 +121,14 @@ if [ -n "$IDRAC_KEYCODE_HACK" ]; then
 fi
 
 # https://stackoverflow.com/a/23961144/643875
-mkdir -p ~/.java/.systemPrefs
-mkdir ~/.java/.userPrefs
+mkdir -p /app/.java/.systemPrefs
+mkdir /app/.java/.userPrefs
 chmod -R 755 ~/.java
-export JAVA_OPTS="-Djava.util.prefs.systemRoot=/home/user/.java -Djava.util.prefs.userRoot=/home/user/.java/.userPrefs"
+export JAVA_OPTS="-Djava.util.prefs.systemRoot=/app/.java -Djava.util.prefs.userRoot=/app/.java/.userPrefs"
 
 exec java -cp avctKVM.jar -Djava.library.path="./lib" com.avocent.idrac.kvm.Main ip=${IDRAC_HOST} kmport=5900 vport=5900 user=${IDRAC_USER} passwd=${IDRAC_PASSWORD} apcp=1 version=2 vmprivilege=true "helpurl=https://${IDRAC_HOST}:443/help/contents.html" &
 
 # If an iso exists at the specified location, mount it
 [ -f "/vmedia/$VIRTUAL_ISO" ] && /mountiso.sh
+set +x
 wait
