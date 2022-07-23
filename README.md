@@ -16,7 +16,7 @@ Container is based on [baseimage-gui](https://github.com/jlesage/docker-baseimag
 
 # Usage
 
-See the docker-compose [here](https://github.com/DomiStyle/docker-idrac6/blob/master/docker-compose.yml) or use this command:
+See the docker-compose [here](https://github.com/askalice/docker-idrac6/blob/master/docker-compose.yml) or use this command:
 ```
 docker run -d \
   -p 5800:5800 \
@@ -24,7 +24,7 @@ docker run -d \
   -e IDRAC_HOST=idrac1.example.org \
   -e IDRAC_USER=root \
   -e IDRAC_PASSWORD=1234 \
-  domistyle/idrac6
+  askalice/idrac6
 ```
 The web interface will be available on port 5800 while the VNC server can be accessed on 5900. Startup might take a few seconds while the Java libraries are downloaded. You can add a volume on /app if you would like to cache them.
 
