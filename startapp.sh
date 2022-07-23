@@ -123,7 +123,7 @@ fi
 # https://stackoverflow.com/a/23961144/643875
 mkdir -p /app/.java/.systemPrefs
 mkdir /app/.java/.userPrefs
-chmod -R 755 ~/.java
+chmod -R 755 /app/.java
 export JAVA_OPTS="-Djava.util.prefs.systemRoot=/app/.java -Djava.util.prefs.userRoot=/app/.java/.userPrefs"
 
 exec java -cp avctKVM.jar -Djava.library.path="./lib" com.avocent.idrac.kvm.Main ip=${IDRAC_HOST} kmport=5900 vport=5900 user=${IDRAC_USER} passwd=${IDRAC_PASSWORD} apcp=1 version=2 vmprivilege=true "helpurl=https://${IDRAC_HOST}:443/help/contents.html" &
